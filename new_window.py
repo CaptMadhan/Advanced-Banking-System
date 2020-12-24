@@ -6,11 +6,13 @@ root.configure(bg="#fdb9b9")
 root.iconbitmap("dbmsicon.ico")
 root.geometry("400x500")
 
+
+string = "hello"
 b=0
 def create():
     global b
     global new
-    if b == 0:
+    if b == 0:    
         new = Toplevel()
         new.title("Instagram")
         new.configure(bg="#fdb9b9")
