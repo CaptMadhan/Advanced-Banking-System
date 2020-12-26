@@ -1,0 +1,98 @@
+from tkinter import *
+import sqlite3 as base
+data_base = base.connect("DBMS.db")
+cursor = data_base.cursor()
+
+register_page =Tk()
+register_page.title("KM bank")
+register_page.configure(bg="#fdb9b9")
+register_page.iconbitmap("dbmsicon.ico")
+#register_page.geometry("900x700")
+##########################################################################
+# Only functions()
+def register_button():
+    return
+def go_back_button():
+    register_page.destroy()
+##########################################################################
+#Only Label()
+#Should code to generate Cust_id for each customer which is not done yet
+cust_id=Label(register_page,text = "Customer ID",font ="none 15",bg ="#fdb9b9")
+full_name=Label(register_page,text = "Full name",font ="none 15",bg ="#fdb9b9")
+#address=Label(register_page,text="Address",font ="none 15",bg ="#fdb9b9")
+street=Label(register_page,text = "Address: Street",font ="none 15",bg ="#fdb9b9")
+state=Label(register_page,text="Address: State",font ="none 15",bg ="#fdb9b9")
+city=Label(register_page,text = "Address: City",font ="none 15",bg ="#fdb9b9")
+dob=Label(register_page,text="DOB",font ="none 15",bg ="#fdb9b9")
+age=Label(register_page,text = "Age",font ="none 15",bg ="#fdb9b9")
+gender=Label(register_page,text="gender",font ="none 15",bg ="#fdb9b9")
+email=Label(register_page,text = "Email ID",font ="none 15",bg ="#fdb9b9")
+Contact=Label(register_page,text="Contact",font ="none 15",bg ="#fdb9b9")
+pan=Label(register_page,text = "PAN no.",font ="none 15",bg ="#fdb9b9")
+nationality=Label(register_page,text="Nationality",font ="none 15",bg ="#fdb9b9")
+password=Label(register_page,text="Password",font ="none 15",bg ="#fdb9b9")
+repassword=Label(register_page,text="re-enter Password",font ="none 15",bg ="#fdb9b9")
+##########################################################################
+#Only Entry() 
+#cust_id=Entry(register_page,text = "Customer ID",font ="none 15",bg ="#fdb9b9")
+full_name_box=Entry(register_page,text = "Full name",font ="none 15",bg ="#fdb9b9")
+
+street_box=Entry(register_page,text = "Street",font ="none 15",bg ="#fdb9b9")
+state_box=Entry(register_page,text="State",font ="none 15",bg ="#fdb9b9")
+city_box=Entry(register_page,text = "City",font ="none 15",bg ="#fdb9b9")
+
+dob_box=Entry(register_page,text="DOB",font ="none 15",bg ="#fdb9b9")
+age_box=Entry(register_page,text = "Age",font ="none 15",bg ="#fdb9b9")
+gender_box=Entry(register_page,text="gender",font ="none 15",bg ="#fdb9b9")
+email_box=Entry(register_page,text = "Email ID",font ="none 15",bg ="#fdb9b9")
+Contact_box=Entry(register_page,text="Contact",font ="none 15",bg ="#fdb9b9")
+pan_box=Entry(register_page,text = "PAN no.",font ="none 15",bg ="#fdb9b9")
+nationality_box=Entry(register_page,text="Nationality",font ="none 15",bg ="#fdb9b9")
+password_box=Entry(register_page,font="none 15", w=20,show="*",bg ="#fdb9b9")
+re_password_box=Entry(register_page,font="none 15", w=20,show="*",bg ="#fdb9b9")
+##########################################################################
+#Only Buttons()
+register=Button(register_page,text="Register",padx=30,pady=5,command=register_button)
+go_back=Button(register_page,text="Go Back to login",padx=30,pady=5,command=go_back_button)
+##########################################################################
+#GRID()
+##########################################################################
+#Only Label.grid()
+cust_id.    grid(row=1,column=0,pady=10,padx=20,sticky = W)
+full_name.  grid(row=2,column=0,pady=10,padx=20,sticky = W)
+#address.    grid(row=3,column=0,pady=10,padx=20)
+street.     grid(row=4,column=0,pady=10,padx=20,sticky = W)
+state.      grid(row=5,column=0,pady=10,padx=20,sticky = W)
+city.       grid(row=6,column=0,pady=10,padx=20,sticky = W)
+dob.        grid(row=7,column=0,pady=10,padx=20,sticky = W)
+age.        grid(row=8,column=0,pady=10,padx=20,sticky = W)
+gender.     grid(row=9,column=0,pady=10,padx=20,sticky = W)
+email.      grid(row=10,column=0,pady=10,padx=20,sticky = W)
+Contact.    grid(row=11,column=0,pady=10,padx=20,sticky = W)
+pan.        grid(row=12,column=0,pady=10,padx=20,sticky = W)
+nationality.grid(row=13,column=0,pady=10,padx=20,sticky = W)
+password.   grid(row=14,column=0,pady=10,padx=20,sticky = W)
+repassword  .grid(row=15,column=0,pady=10,padx=20,sticky = W)
+##########################################################################
+#Only Entry.grid()
+#cust_id_box.    grid(row=1,column=1,pady=10,padx=20,sticky = W)
+full_name_box.  grid(row=2,column=1,pady=10,padx=20,sticky = W)
+street_box.     grid(row=4,column=1,pady=10,padx=20,sticky = W)
+state_box.      grid(row=5,column=1,pady=10,padx=20,sticky = W)
+city_box.       grid(row=6,column=1,pady=10,padx=20,sticky = W)
+dob_box.        grid(row=7,column=1,pady=10,padx=20,sticky = W)
+age_box.        grid(row=8,column=1,pady=10,padx=20,sticky = W)
+gender_box.     grid(row=9,column=1,pady=10,padx=20,sticky = W)
+email_box.      grid(row=10,column=1,pady=10,padx=20,sticky = W)
+Contact_box.    grid(row=11,column=1,pady=10,padx=20,sticky = W)
+pan_box.        grid(row=12,column=1,pady=10,padx=20,sticky = W)
+nationality_box.grid(row=13,column=1,pady=10,padx=20,sticky = W)
+password_box.   grid(row=14,column=1,pady=10,padx=20,sticky = W)
+re_password_box.grid(row=15,column=1,pady=10,padx=20,sticky = W)
+##########################################################################
+# Only Button.grid()
+register.grid(row=16,column=1,pady=10,padx=20,sticky = W)
+go_back.grid(row=17,column=1,pady=10,padx=20,sticky = W)
+##########################################################################
+mainloop()
+data_base.close()

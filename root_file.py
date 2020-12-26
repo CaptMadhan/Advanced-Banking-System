@@ -1,4 +1,6 @@
 from tkinter import *
+import register_page
+import os
 
 login_page =Tk()
 login_page.title("KM bank")
@@ -20,8 +22,18 @@ def login():
     else:
         lab = Label(login_page,text ="Try Again",font="Android 20",padx=10,pady=10)
         lab.grid(row=4,column=0,columnspan=2)
+register_page_exists=0
 def signup():
-    return
+    global register_page_exists
+    global register_page
+    if register_page_exists == 0:    
+        os.system('register_page.py')
+
+    if register_page.register_page.winfo_exists():
+        register_page_exists=1
+    else:
+        os.system('register_page.py')
+        register_page_exists=1
 
 ##########################################################################
 #Only Label()
