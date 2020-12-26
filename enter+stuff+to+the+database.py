@@ -9,7 +9,7 @@ cursor = data_base.cursor()
 cursor.execute("CREATE TABLE IF NOT EXISTS users (book_id int primary key, age int)")
 cursor.execute("INSERT INTO users VALUES (:x, :age)",
                {
-                   'x': 1003,
+                   'x': 1004,
                    'age':22
                }
 

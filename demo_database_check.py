@@ -5,6 +5,26 @@ data_base = base.connect("demo1.db")
 
 # create a cursor
 cursor = data_base.cursor()
+
+
+cursor.execute(''' create table if not exists customerID_generator(row int primary key ,cust_id_g int)
+''')
+#cursor.execute("INSERT INTO customerID_generator VALUES (:row, :cust_id_g)",
+ #              {
+  #                 'row':1 ,
+   #                'cust_id_g':110011000
+    #           }
+#
+ #              )
+
+cursor.execute("SELECT cust_id_g FROM customerID_generator where row =1")
+x = cursor.fetchall()
+cust_id_ =x[0][0]+1
+print(cust_id_)
+cursor.execute("UPDATE customerID_generator SET cust_id_g = :cust_id_d WHERE row=1;",{
+    'cust_id_d':x[0][0]+1
+    }
+    )
 cursor.execute('''create table IF NOT EXISTS CUSTOMER(
 CUST_ID INT PRIMARY KEY,
 PASSWORD VARCHAR(20),
@@ -108,28 +128,24 @@ DATE_OF_TRANS DATE,
 Foreign Key(AC_NO) REFERENCES ACCOUNT(AC_NO) ON DELETE CASCADE);
 ''')
 
-
-
-
-
-
-
-cursor.execute("SELECT *, oid FROM CUSTOMER")
-cursor.execute("SELECT *, oid FROM CUSTOMER_Address")
-cursor.execute("SELECT *, oid FROM INTEREST")
-cursor.execute("SELECT *, oid FROM ACCOUNT")
-cursor.execute("SELECT *, oid FROM BRANCH")
-cursor.execute("SELECT *, oid FROM OFFICER")
-cursor.execute("SELECT *, oid FROM BRANCH_ADDRESS")
-cursor.execute("SELECT *, oid FROM OFFICER_ADDRESS")
-cursor.execute("SELECT *, oid FROM MANAGER")
-cursor.execute("SELECT *, oid FROM MANAGER_ADDRESS")
-cursor.execute("SELECT *, oid FROM TRANSACTIONS")
+cursor.execute("SELECT * FROM CUSTOMER")
+cursor.execute("SELECT * FROM CUSTOMER_Address")
+cursor.execute("SELECT * FROM INTEREST")
+cursor.execute("SELECT * FROM ACCOUNT")
+cursor.execute("SELECT * FROM BRANCH")
+cursor.execute("SELECT * FROM OFFICER")
+cursor.execute("SELECT * FROM BRANCH_ADDRESS")
+cursor.execute("SELECT * FROM OFFICER_ADDRESS")
+cursor.execute("SELECT * FROM MANAGER")
+cursor.execute("SELECT * FROM MANAGER_ADDRESS")
+cursor.execute("SELECT * FROM TRANSACTIONS")
 
 
 #cursor.execute("DELETE from users WHERE oid='0'")
-print(cursor.fetchall())
 
+x =cursor.fetchall()
+for i in x:
+    print(x)
 
 # commit all the changes
 data_base.commit()
