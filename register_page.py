@@ -1,4 +1,5 @@
 from tkinter import *
+import os
 import sqlite3 as base
 data_base = base.connect("demo1.db")
 cursor = data_base.cursor()
@@ -9,9 +10,13 @@ register_page.configure(bg="#fdb9b9")
 register_page.iconbitmap("dbmsicon.ico")
 #register_page.geometry("900x700")
 
+
+account_page_exists=0
+
+
 cursor.execute("SELECT cust_id_g FROM customerID_generator where row =1")
 x = cursor.fetchall()
-cust_id_ =x[0][0]+1
+cust_id_ =x[0][0]
 print(cust_id_)
 cursor.execute("UPDATE customerID_generator SET cust_id_g = :cust_id_d WHERE row=1;",{
     'cust_id_d':x[0][0]+1
@@ -34,10 +39,54 @@ def register_button():
     nationality= nationality_box.get()
     password=    password_box.get()
     re_password= re_password_box.get()
-    if password != re_password:
+    if full_name =='':
+        lab = Label(register_page,text ="Please enter Full name",font="Android 15",padx=10,pady=10)
+        lab.grid(row=19,column=1)
+    elif street =='':
+        lab = Label(register_page,text ="Please enter street",font="Android 15",padx=10,pady=10)
+        lab.grid(row=19,column=1)        
+    elif state =='':
+        lab = Label(register_page,text ="Please enter state",font="Android 15",padx=10,pady=10)
+        lab.grid(row=19,column=1)        
+    elif city =='':
+        lab = Label(register_page,text ="Please enter city",font="Android 15",padx=10,pady=10)
+        lab.grid(row=19,column=1)        
+    elif pin =='':
+        lab = Label(register_page,text ="Please enter pin",font="Android 15",padx=10,pady=10)
+        lab.grid(row=19,column=1)        
+    elif dob =='':
+        lab = Label(register_page,text ="Please enter dob",font="Android 15",padx=10,pady=10)
+        lab.grid(row=19,column=1)        
+    elif age =='':
+        lab = Label(register_page,text ="Please enter age",font="Android 15",padx=10,pady=10)
+        lab.grid(row=19,column=1)        
+    elif gender =='':
+        lab = Label(register_page,text ="Please enter gender",font="Android 15",padx=10,pady=10)
+        lab.grid(row=19,column=1)        
+    elif email =='':
+        lab = Label(register_page,text ="Please enter email",font="Android 15",padx=10,pady=10)
+        lab.grid(row=19,column=1)        
+    elif Contact =='':
+        lab = Label(register_page,text ="Please enter Contact",font="Android 15",padx=10,pady=10)
+        lab.grid(row=19,column=1)        
+    elif pan =='':
+        lab = Label(register_page,text ="Please enter pan",font="Android 15",padx=10,pady=10)
+        lab.grid(row=19,column=1)        
+    elif nationality =='':
+        lab = Label(register_page,text ="Please enter nationality",font="Android 15",padx=10,pady=10)
+        lab.grid(row=19,column=1)        
+    elif password =='':
+        lab = Label(register_page,text ="Please enter password",font="Android 15",padx=10,pady=10)
+        lab.grid(row=19,column=1)        
+    elif re_password =='':
+        lab = Label(register_page,text ="Please re-enter password",font="Android 15",padx=10,pady=10)
+        lab.grid(row=19,column=1)        
+     
+    elif password != re_password:
         Label(register_page,text="Password mismatch",font ="none 15",bg ="#fdb9b9").grid(row=16,column=2,pady=10,padx=20,sticky = W)
     else:
-            cursor.execute("INSERT INTO CUSTOMER VALUES (:CUST_ID,:password,:NAME, :DOB, :AGE,:GENDER,:EMAIL,:Contact,:pan,:nationality)",
+
+        cursor.execute("INSERT INTO CUSTOMER VALUES (:CUST_ID,:password,:NAME, :DOB, :AGE,:GENDER,:EMAIL,:Contact,:pan,:nationality)",
                {
                    
                    'CUST_ID':cust_id_,
@@ -51,7 +100,7 @@ def register_button():
                    'pan': pan,
                    'nationality':nationality 
                 })
-            cursor.execute("INSERT INTO CUSTOMER_address VALUES (:CUST_ID, :STREET,:CITY,:STATE,:PIN)",
+        cursor.execute("INSERT INTO CUSTOMER_address VALUES (:CUST_ID, :STREET,:CITY,:STATE,:PIN)",
                 {
                     'CUST_ID':cust_id_,
                     'STREET':street,
@@ -59,7 +108,7 @@ def register_button():
                     'CITY':city ,
                     'PIN':pin
                 })
-        
+        create_account_after_register()    
         
 
 
@@ -152,6 +201,31 @@ re_password_box.grid(row=16,column=1,pady=10,padx=20,sticky = W)
 # Only Button.grid()
 register.grid(row=17,column=1,pady=10,padx=20,sticky = W)
 go_back.grid(row=18,column=1,pady=10,padx=20,sticky = W)
+###############################################################################################################
+###############################################################################################################
+#Account Part
+def create_account_after_register():
+    account_page = Toplevel()
+    account_page.title("KM bank")
+    account_page.configure(bg="#fdb9b9")
+    account_page.iconbitmap("dbmsicon.ico")
+    cursor.execute("SELECT acc_no_g FROM account_NO_generator where row =1")
+    x = cursor.fetchall()
+    acc_no =x[0][0]
+    print(acc_no)
+    cursor.execute("UPDATE account_NO_generator SET acc_no_g = :acc_no WHERE row=1;",{
+    'acc_no':x[0][0]+1
+        }
+        )
+    
+
+
+
+
+
+
+
+
 ##########################################################################
 mainloop()
 data_base.commit()

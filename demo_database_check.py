@@ -9,6 +9,9 @@ cursor = data_base.cursor()
 
 cursor.execute(''' create table if not exists customerID_generator(row int primary key ,cust_id_g int)
 ''')
+cursor.execute(''' create table if not exists account_NO_generator(row int primary key ,acc_no_g int)
+''')
+
 #cursor.execute("INSERT INTO customerID_generator VALUES (:row, :cust_id_g)",
 #              {
 #                 'row':1 ,
@@ -16,7 +19,13 @@ cursor.execute(''' create table if not exists customerID_generator(row int prima
 #           }
 #
 #              )
-
+#cursor.execute("INSERT INTO account_NO_generator VALUES (:row, :acc_no)",
+#             {
+#               'row':1 ,
+#             'acc_no':66556655000
+#       }
+#
+#             )
 cursor.execute("SELECT cust_id_g FROM customerID_generator where row =1")
 x = cursor.fetchall()
 cust_id_ =x[0][0]+1
@@ -128,10 +137,10 @@ DATE_OF_TRANS DATE,
 Foreign Key(AC_NO) REFERENCES ACCOUNT(AC_NO) ON DELETE CASCADE);
 ''')
 
-cursor.execute("SELECT * FROM CUSTOMER")
-cursor.execute("SELECT * FROM CUSTOMER_Address")
-cursor.execute("SELECT * FROM INTEREST")
-cursor.execute("SELECT * FROM ACCOUNT")
+#cursor.execute("SELECT * FROM CUSTOMER")
+#cursor.execute("SELECT * FROM CUSTOMER_Address")
+#cursor.execute("SELECT * FROM INTEREST")
+#cursor.execute("SELECT * FROM ACCOUNT")
 cursor.execute("SELECT * FROM BRANCH")
 cursor.execute("SELECT * FROM OFFICER")
 cursor.execute("SELECT * FROM BRANCH_ADDRESS")

@@ -51,7 +51,7 @@ def signup():
 #picture = PhotoImage(file = "")
 #lab = Label(login_page, image=picture)
 #lab.grid(row=0,column=0,columnspan=2)
-username=Label(login_page,text = "Username",font ="none 15",bg ="#fdb9b9")
+username=Label(login_page,text = "CustomerID",font ="none 15",bg ="#fdb9b9")
 password=Label(login_page,text="Password",font ="none 15",bg ="#fdb9b9")
 ##########################################################################
 
@@ -79,3 +79,5 @@ login.grid(row=3,column=1,pady=8,padx=20,sticky = W)
 sign_up.grid(row=4,column=1,pady=8,padx=20,sticky = W)
 
 login_page.mainloop()
+data_base.commit()
+data_base.close()

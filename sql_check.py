@@ -6,7 +6,13 @@ cursor = data_base.cursor()
 
 
 
-cursor.execute("SELECT * from customer ")
+#cursor.execute("delete from customer ")
+print(cursor.fetchall())
+cursor.execute("SELECT * FROM customer")
+print(cursor.fetchall())
+cursor.execute("SELECT * FROM customer_address")
 print(cursor.fetchall())
 
+
+data_base.commit()
 data_base.close()
