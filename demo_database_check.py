@@ -10,12 +10,12 @@ cursor = data_base.cursor()
 cursor.execute(''' create table if not exists customerID_generator(row int primary key ,cust_id_g int)
 ''')
 #cursor.execute("INSERT INTO customerID_generator VALUES (:row, :cust_id_g)",
- #              {
-  #                 'row':1 ,
-   #                'cust_id_g':110011000
-    #           }
+#              {
+#                 'row':1 ,
+#                'cust_id_g':110011000
+#           }
 #
- #              )
+#              )
 
 cursor.execute("SELECT cust_id_g FROM customerID_generator where row =1")
 x = cursor.fetchall()
@@ -140,7 +140,36 @@ cursor.execute("SELECT * FROM MANAGER")
 cursor.execute("SELECT * FROM MANAGER_ADDRESS")
 cursor.execute("SELECT * FROM TRANSACTIONS")
 
-
+#######################################################################################
+#admin login data
+'''cursor.execute("INSERT INTO CUSTOMER VALUES (:CUST_ID,:password,:NAME, :DOB, :AGE,:GENDER,:EMAIL,:Contact,:pan,:nationality)",
+    {
+                   
+                   'CUST_ID':11111111,
+                   'password':12345678,
+                   'NAME': "ADMIN",
+                   'DOB':'2000-06-01' ,
+                   'AGE':20 ,
+                   'GENDER':'Male' ,
+                   'EMAIL': 'hahahahaha',
+                   'Contact': 1010101010,
+                   'pan': 1010212212,
+                   'nationality':"Indian" 
+    })
+cursor.execute("INSERT INTO CUSTOMER_address VALUES (:CUST_ID, :STREET,:CITY,:STATE,:PIN)",
+                {
+                    'CUST_ID':11111111,
+                    'STREET':"llllll",
+                    'STATE':"Karnataka",
+                    'CITY':"bangalore" ,
+                    'PIN':560071
+                })
+cursor.execute("SELECT * FROM CUSTOMER")
+print(cursor.fetchall())
+cursor.execute("SELECT * FROM CUSTOMER_ADDRESS")
+print(cursor.fetchall())
+'''
+#######################################################################################
 #cursor.execute("DELETE from users WHERE oid='0'")
 
 x =cursor.fetchall()

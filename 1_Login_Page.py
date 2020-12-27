@@ -1,4 +1,9 @@
 from tkinter import *
+import sqlite3 as base
+# create or connect a data base
+data_base = base.connect("demo1.db")
+# create a cursor
+cursor = data_base.cursor()
 
 login_page =Tk()
 login_page.title("KM bank")
@@ -11,15 +16,33 @@ login_page.iconbitmap("dbmsicon.ico")
 def login():
     u="admin"
     p="1234"
-    user= username_box.get()
-    passw=password_box.get()
-    if user == u and passw == p:
-        text = "hello "+user
-        lab = Label(login_page,text = text,font="Android 20",padx=10,pady=10)
-        lab.grid(row=4,column=0,columnspan=2)
+    user_i= username_box.get()
+    passw_i=password_box.get()
+    cursor.execute("SELECT PASSWORD from customer WHERE CUST_ID = :CUSTID;",{ 'CUSTID':user_i})
+    x = cursor.fetchall()
+    
+    if user_i =='':
+        lab = Label(login_page,text ="Please enter Cust_ID",font="Android 15",padx=10,pady=10)
+        lab.grid(row=5,column=1)
+    elif passw_i =='':
+        lab = Label(login_page,text ="Please enter Password",font="Android 15",padx=10,pady=10)
+        lab.grid(row=5,column=1,columnspan=2)       
+    elif user_i == u and passw_i == p:
+        text = "hello "+user_i
+        lab = Label(login_page,text = text,font="Android 15",padx=10,pady=10)
+        lab.grid(row=5,column=1,columnspan=2)
+    elif x[0][0]:
+        cursor.execute("SELECT NAME from customer WHERE CUST_ID = :CUSTID;",{ 'CUSTID':user_i})
+        n = cursor.fetchall()
+        print(x[0][0])
+        passw_i == x[0][0]
+        text = "hello "+ n[0][0]
+        lab = Label(login_page,text = text,font="Android 15",padx=10,pady=10)
+        lab.grid(row=5,column=1,columnspan=2)
+        
     else:
         lab = Label(login_page,text ="Try Again",font="Android 20",padx=10,pady=10)
-        lab.grid(row=4,column=0,columnspan=2)
+        lab.grid(row=5,column=1,columnspan=2)
 def signup():
     return
 
