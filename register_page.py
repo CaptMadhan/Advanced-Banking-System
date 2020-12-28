@@ -217,7 +217,14 @@ def create_account_after_register():
     'acc_no':x[0][0]+1
         }
         )
-    
+    #Account Labels
+    acc_no_l=Label(account_page,text = "Account No.",font ="none 15",bg ="#fdb9b9")
+    acc_no_d=Label(account_page,text = acc_no,font ="none 15",bg ="#fdb9b9")
+
+    #Label.grid()
+    acc_no_l.    grid(row=1,column=0,pady=10,padx=20,sticky = W)
+    acc_no_d.    grid(row=1,column=1,pady=10,padx=20,sticky = W)
+
 
 
 
