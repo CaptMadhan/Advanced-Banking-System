@@ -1,5 +1,6 @@
 from tkinter import *
 import sqlite3 as base
+from datetime import date
 data_base = base.connect("demo1.db")
 cursor = data_base.cursor()
 
@@ -68,7 +69,7 @@ def acct_exec(cust_id_):
             interest_rate = 0
             interest_amt = 0
             balance = 0
-        from datetime import date
+        
         if savings == 1:
             acc_type ="Savings"
         elif current ==1:

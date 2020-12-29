@@ -8,7 +8,7 @@ cursor = data_base.cursor()
 
 #cursor.execute("delete from customer ")
 #print(cursor.fetchall())
-cursor.execute("SELECT * FROM account")
+cursor.execute("SELECT * FROM transactions")
 print(cursor.fetchall())
 
 

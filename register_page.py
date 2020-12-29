@@ -25,6 +25,7 @@ cursor.execute("UPDATE customerID_generator SET cust_id_g = :cust_id_d WHERE row
     )
 ##########################################################################
 # Only functions()
+
 def register_button():
     full_name =  full_name_box.get()
     street =     street_box.get()
@@ -110,12 +111,7 @@ def register_button():
                     'PIN':pin
                 })
         create_account_after_register()    
-        
-
-
-
-
-               
+                      
 def go_back_button():
     register_page.destroy()
 
@@ -144,17 +140,17 @@ repassword=Label(register_page,text="re-enter Password",font ="none 15",bg ="#fd
 #cust_id=Entry(register_page,text = "Customer ID",font ="none 15",bg ="#fdb9b9")
 full_name_box=Entry(register_page,text = "Full name",font ="none 15",bg ="#fdb9b9")
 
-street_box=Entry(register_page,text = "Street",font ="none 15",bg ="#fdb9b9")
-state_box=Entry(register_page,text="State",font ="none 15",bg ="#fdb9b9")
-city_box=Entry(register_page,text = "City",font ="none 15",bg ="#fdb9b9")
-pin_box=Entry(register_page,text = "Pin",font ="none 15",bg ="#fdb9b9")
-dob_box=Entry(register_page,text="DOB",font ="none 15",bg ="#fdb9b9")
-age_box=Entry(register_page,text = "Age",font ="none 15",bg ="#fdb9b9")
-gender_box=Entry(register_page,text="gender",font ="none 15",bg ="#fdb9b9")
-email_box=Entry(register_page,text = "Email ID",font ="none 15",bg ="#fdb9b9")
-Contact_box=Entry(register_page,text="Contact",font ="none 15",bg ="#fdb9b9")
-pan_box=Entry(register_page,text = "PAN no.",font ="none 15",bg ="#fdb9b9")
-nationality_box=Entry(register_page,text="Nationality",font ="none 15",bg ="#fdb9b9")
+street_box=Entry(register_page,font ="none 15",bg ="#fdb9b9")
+state_box=Entry(register_page,font ="none 15",bg ="#fdb9b9")
+city_box=Entry(register_page,font ="none 15",bg ="#fdb9b9")
+pin_box=Entry(register_page,font ="none 15",bg ="#fdb9b9")
+dob_box=Entry(register_page,font ="none 15",bg ="#fdb9b9")
+age_box=Entry(register_page,font ="none 15",bg ="#fdb9b9")
+gender_box=Entry(register_page,font ="none 15",bg ="#fdb9b9")
+email_box=Entry(register_page,font ="none 15",bg ="#fdb9b9")
+Contact_box=Entry(register_page,font ="none 15",bg ="#fdb9b9")
+pan_box=Entry(register_page,font ="none 15",bg ="#fdb9b9")
+nationality_box=Entry(register_page,font ="none 15",bg ="#fdb9b9")
 password_box=Entry(register_page,font="none 15", w=20,show="*",bg ="#fdb9b9")
 re_password_box=Entry(register_page,font="none 15", w=20,show="*",bg ="#fdb9b9")
 ##########################################################################
@@ -223,7 +219,7 @@ def create_account_after_register():
     ###########################################################################################################
     #functions
 
-    def chkchk():
+    def check_checkbox():
         l = Label(account_page, bg='white', width=20, text='empty')
         l.grid(row=2,column=0,pady=10,padx=20,sticky = W)
         if (svg1.get() == 1) & (cur1.get() == 0):
@@ -307,8 +303,8 @@ def create_account_after_register():
     cur1 = IntVar()
     savings = 0
     current = 0
-    svg_chk =   Checkbutton(account_page, text='Saving',variable=svg1, onvalue=1, offvalue=0,command=chkchk)
-    cur_chk=    Checkbutton(account_page, text='Current',variable=cur1, onvalue=1, offvalue=0,command=chkchk)
+    svg_chk =   Checkbutton(account_page, text='Saving',variable=svg1, onvalue=1, offvalue=0,command=check_checkbox)
+    cur_chk=    Checkbutton(account_page, text='Current',variable=cur1, onvalue=1, offvalue=0,command=check_checkbox)
 
     #################################################################################################33
     #buttons
@@ -321,12 +317,6 @@ def create_account_after_register():
 
     #Button.grid()
     submit_button_account.     grid(row=4,column=1,pady=10,padx=20,sticky = W)
-
-
-
-
-
-
 
 
 

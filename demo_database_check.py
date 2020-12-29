@@ -11,21 +11,26 @@ cursor.execute(''' create table if not exists customerID_generator(row int prima
 ''')
 cursor.execute(''' create table if not exists account_NO_generator(row int primary key ,acc_no_g int)
 ''')
+cursor.execute(''' create table if not exists transactionID_generator(row int primary key ,trans_id_g int)
+''')
 
 #cursor.execute("INSERT INTO customerID_generator VALUES (:row, :cust_id_g)",
 #              {
 #                 'row':1 ,
 #                'cust_id_g':110011000
-#           }
-#
-#              )
+#           })
 #cursor.execute("INSERT INTO account_NO_generator VALUES (:row, :acc_no)",
 #             {
 #               'row':1 ,
 #             'acc_no':66556655000
-#       }
-#
-#             )
+#       })
+cursor.execute("INSERT INTO transactionID_generator VALUES (:row, :trans_id_g)",
+             {
+               'row':1 ,
+             'trans_id_g':8888811000
+       })
+
+
 #cursor.execute("SELECT cust_id_g FROM customerID_generator where row =1")
 #x = cursor.fetchall()
 #cust_id_ =x[0][0]+1

@@ -22,6 +22,7 @@ def login():
     passw_i=password_box.get()
     cursor.execute("SELECT PASSWORD from customer WHERE CUST_ID = :CUSTID;",{ 'CUSTID':user_i})
     x = cursor.fetchall()
+    cust_id_=user_i
     
     if user_i =='':
         lab = Label(login_page,text ="Please enter Cust_ID",font="Android 15",padx=10,pady=10)
@@ -41,6 +42,7 @@ def login():
         text = "hello "+ n[0][0]
         lab = Label(login_page,text = text,font="Android 15",padx=10,pady=10)
         lab.grid(row=5,column=1,columnspan=2)
+        signin_window()
         
     else:
         lab = Label(login_page,text ="Try Again",font="Android 20",padx=10,pady=10)
@@ -92,6 +94,8 @@ password_box.grid(row=2,column=1,pady=10,padx=20)
 login.grid(row=3,column=1,pady=8,padx=20,sticky = W)
 sign_up.grid(row=4,column=1,pady=8,padx=20,sticky = W)
 
-login_page.mainloop()
+
+
+mainloop()
 data_base.commit()
 data_base.close()
