@@ -1,4 +1,6 @@
 from tkinter import *
+import register_page
+import os
 import sqlite3 as base
 # create or connect a data base
 data_base = base.connect("demo1.db")
@@ -31,11 +33,11 @@ def login():
         text = "hello "+user_i
         lab = Label(login_page,text = text,font="Android 15",padx=10,pady=10)
         lab.grid(row=5,column=1,columnspan=2)
-    elif passw_i == x[0][0]:
+    elif x[0][0]:
         cursor.execute("SELECT NAME from customer WHERE CUST_ID = :CUSTID;",{ 'CUSTID':user_i})
         n = cursor.fetchall()
         print(x[0][0])
-        
+        passw_i == x[0][0]
         text = "hello "+ n[0][0]
         lab = Label(login_page,text = text,font="Android 15",padx=10,pady=10)
         lab.grid(row=5,column=1,columnspan=2)
@@ -43,8 +45,20 @@ def login():
     else:
         lab = Label(login_page,text ="Try Again",font="Android 20",padx=10,pady=10)
         lab.grid(row=5,column=1,columnspan=2)
+
+
+register_page_exists=0
 def signup():
-    return
+    global register_page_exists
+    global register_page
+    if register_page_exists == 0:    
+        os.system('register_page.py')
+
+    if register_page.register_page.winfo_exists():
+        register_page_exists=1
+    else:
+        os.system('register_page.py')
+        register_page_exists=1
 
 ##########################################################################
 #Only Label()

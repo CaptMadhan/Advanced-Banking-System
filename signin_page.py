@@ -1,10 +1,10 @@
 from tkinter import *
 import sqlite3 as base
-from datetime import date
+import datetime 
 data_base = base.connect("demo1.db")
 cursor = data_base.cursor()
 
-def signin_window(cust_id_):
+def customer_signin_window(cust_id_):
     signin_page =Tk()
     signin_page.title("KM bank")
     signin_page.configure(bg="#fdb9b9")
@@ -50,14 +50,14 @@ def signin_window(cust_id_):
                 {
                     'trans_id_g':t[0][0]+1
                     })
-                date_of_trans = date.today()
+                date_of_trans = datetime.datetime.now()
 
                 cursor.execute("INSERT INTO TRANSACTIONS VALUES (:AC_NO,:TRANS_ID ,:TRANS_TYPE ,:DATE_OF_TRANS )",
                 {
                     
                     'AC_NO':ac_no,
                     'TRANS_ID':trans_id,
-                    'TRANS_TYPE': "DEPOSITED +"+ str(deposit_amount_entry.get()),
+                    'TRANS_TYPE': "\tDEPOSITED +"+ str(deposit_amount_entry.get())+"\t",
                     'DATE_OF_TRANS':date_of_trans 
                     })
 
@@ -102,14 +102,14 @@ def signin_window(cust_id_):
                 {
                     'trans_id_g':t[0][0]+1
                     })
-                date_of_trans = date.today()
+                date_of_trans = datetime.datetime.now()
 
                 cursor.execute("INSERT INTO TRANSACTIONS VALUES (:AC_NO,:TRANS_ID ,:TRANS_TYPE ,:DATE_OF_TRANS )",
                 {
                     
                     'AC_NO':ac_no,
                     'TRANS_ID':trans_id,
-                    'TRANS_TYPE': "WITHDREW -"+ str(withdraw_amount_entry.get()),
+                    'TRANS_TYPE': "\tWITHDREW -"+ str(withdraw_amount_entry.get())+"\t",
                     'DATE_OF_TRANS':date_of_trans 
                     })
 
@@ -122,7 +122,7 @@ def signin_window(cust_id_):
                 Label(withdraw_page,text = "  Enter only numbers ",font ="none 10",bg ="#fdb9b9").grid(row=1,column=1,pady=10,padx=20)
 
             
-        submit_button=Button(withdraw_page,text="withdraw",padx=30,pady=10,height = 2, width = 20,command=submit_button_f_w)
+        submit_button=Button(withdraw_page,text="withdraw",padx=30,pady=10,command=submit_button_f_w)
         submit_button.grid(row=2,column=0,pady=10,padx=20)
         def close_button_f():
             withdraw_page.destroy()
@@ -132,7 +132,33 @@ def signin_window(cust_id_):
 
 
     def mini_statement_f():
-        return
+        mini_statement =Toplevel()
+        mini_statement.title("KM bank")
+        mini_statement.configure(bg="#fdb9b9")
+        mini_statement.iconbitmap("dbmsicon.ico")
+        cursor.execute("SELECT * FROM transactions where ac_no =:ac_no",{'ac_no':ac_no})
+        print(ac_no)
+        x = cursor.fetchall()
+        i=0
+        j=0
+        result =[]
+        var=' '
+        for i in range(len(x)):
+            for j in range(4):
+                var=var+"\t" +str(x[i][j]) 
+            result.append(var)
+            var=' '
+        i=0
+        Label(mini_statement,text ="\tACCT NO.\tTRANS ID\t ACTIVITY\t  DATE            ",font ="none 15",bg ="#fdb9b9", borderwidth=2, relief="ridge",pady=10,padx=10).grid(row=0,column=0,pady=10,padx=10)
+        for i in range(len(result)):
+            Label(mini_statement,text = result[i] +"\t",font ="none 15",bg ="#fdb9b9", borderwidth=2, relief="ridge").grid(row=i+1,column=0,pady=10,padx=10)
+        def close_button_f():
+            mini_statement.destroy()
+        close_button=Button(mini_statement,text="Close",padx=20,pady=5,height = 2, width = 20,command=close_button_f)
+        close_button.grid(row=30,column=0,pady=10,padx=20)
+        mini_statement.grab_set()
+
+
     def log_out_f():
         signin_page.destroy()
     cursor.execute("SELECT AC_NO from account WHERE CUST_ID = :CUSTID;",{ 'CUSTID':cust_id_})
@@ -166,7 +192,7 @@ def signin_window(cust_id_):
 
     mainloop()
 
-signin_window(110011033)
+customer_signin_window(110011062)
 data_base.commit()
 
 
