@@ -1,5 +1,7 @@
-
+from tkinter import *
+import os
 import sqlite3 as base
+import datetime
 # create or connect a data base
 data_base = base.connect("demo1.db")
 # create a cursor
@@ -7,12 +9,14 @@ cursor = data_base.cursor()
 
 
 
-cursor.execute("delete FROM transactions ")
-print(cursor.fetchall())
 
+'''
+cursor.execute("select * from account ")
+print(cursor.fetchall())
+cursor.execute("select * from transactions where ac_no=:ac_no ",{'ac_no':66556655063})
 x = cursor.fetchall()
 print(x)
-
+'''
 #cursor.execute("SELECT * FROM transactions where ac_no =:ac_no",{'ac_no':ac_no}")
 #print(cursor.fetchall())
 '''
@@ -28,6 +32,6 @@ else:
 #x = cursor.fetchall()
 #print(x)
 
-
+mainloop()
 data_base.commit()
 data_base.close()
