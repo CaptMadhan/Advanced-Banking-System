@@ -13,6 +13,7 @@ login_page.title("KM bank")
 login_page.configure(bg="#93D5FF")
 login_page.iconbitmap("dbmsicon.ico")
 #login_page.geometry("900x700")
+Label(login_page,text = "KMC BANK",font ="Algerian 35",bg ="#93D5FF").grid(sticky=E)
 
 ##########################################################################
 # Only functions()
@@ -352,7 +353,7 @@ def login():
         def log_out_f():
             admin_page.destroy()
         #Labels
-        welcome_message=Label(admin_page,text = "Welcome Manager",font ="Algerian 25",bg ="#93D5FF")
+        Label(admin_page,text = "Welcome Manager",font ="Algerian 25",bg ="#93D5FF").grid(row=0,column=0,pady=10,padx=20)
         #Button
         employee_details=Button(admin_page,text="Employee Details",padx=30,pady=5,height = 2, width = 20,command=employee_details_f)
         account_details=Button(admin_page,text="All Account Details",padx=30,pady=5,height = 2, width = 20,command=account_details_f)
@@ -362,8 +363,7 @@ def login():
         add_interest_to_accounts=Button(admin_page,text="Add interest amount to accounts",padx=30,pady=5,height = 2, width = 20,command=add_interest_to_accounts_f)
         log_out_button=Button(admin_page,text="LogOut",padx=30,pady=5,height = 2, width = 20,command=log_out_f)
 
-        #Label.grid()
-        welcome_message .grid(row=0,column=0,pady=10,padx=20)
+
         #Buttone.grid()
         employee_details        .grid(row=1,column=0,pady=10,padx=20)
         add_employee            .grid(row=1,column=1,pady=10,padx=20)

@@ -155,7 +155,7 @@ re_password_box=Entry(register_page,font="none 15", w=20,show="*",bg ="#93D5FF")
 ##########################################################################
 #Only Buttons()
 register=Button(register_page,text="Register",padx=30,pady=5,command=register_button)
-go_back=Button(register_page,text="Go Back to login",padx=30,pady=5,command=go_back_button)
+go_back=Button(register_page,text="Go to LogIn",padx=30,pady=5,command=go_back_button)
 ##########################################################################
 #GRID()
 ##########################################################################
