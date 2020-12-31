@@ -7,7 +7,7 @@ cursor = data_base.cursor()
 
 register_page =Tk()
 register_page.title("KM bank")
-register_page.configure(bg="#fdb9b9")
+register_page.configure(bg="#93D5FF")
 register_page.iconbitmap("dbmsicon.ico")
 #register_page.geometry("900x700")
 
@@ -84,7 +84,7 @@ def register_button():
         lab.grid(row=19,column=1)        
      
     elif password != re_password:
-        Label(register_page,text="Password mismatch",font ="none 15",bg ="#fdb9b9").grid(row=16,column=2,pady=10,padx=20,sticky = W)
+        Label(register_page,text="Password mismatch",font ="none 15",bg ="#93D5FF").grid(row=16,column=2,pady=10,padx=20,sticky = W)
     else:
 
         cursor.execute("INSERT INTO CUSTOMER VALUES (:CUST_ID,:password,:NAME, :DOB, :AGE,:GENDER,:EMAIL,:Contact,:pan,:nationality)",
@@ -117,41 +117,41 @@ def go_back_button():
 ##########################################################################
 #Only Label()
 #Should code to generate Cust_id for each customer which is not done yet
-cust_id=Label(register_page,text = "Customer ID",font ="none 15",bg ="#fdb9b9")
-cust_id_display=Label(register_page,text = cust_id_,font ="none 15",bg ="#fdb9b9")
-full_name=Label(register_page,text = "Full name",font ="none 15",bg ="#fdb9b9")
-#address=Label(register_page,text="Address",font ="none 15",bg ="#fdb9b9")
-street=Label(register_page,text = "Address: Street",font ="none 15",bg ="#fdb9b9")
-state=Label(register_page,text="Address: State",font ="none 15",bg ="#fdb9b9")
-city=Label(register_page,text = "Address: City",font ="none 15",bg ="#fdb9b9")
-pin=Label(register_page,text = "Address: pin",font ="none 15",bg ="#fdb9b9")
-dob=Label(register_page,text="DOB",font ="none 15",bg ="#fdb9b9")
-age=Label(register_page,text = "Age",font ="none 15",bg ="#fdb9b9")
-gender=Label(register_page,text="gender",font ="none 15",bg ="#fdb9b9")
-email=Label(register_page,text = "Email ID",font ="none 15",bg ="#fdb9b9")
-Contact=Label(register_page,text="Contact",font ="none 15",bg ="#fdb9b9")
-pan=Label(register_page,text = "PAN no.",font ="none 15",bg ="#fdb9b9")
-nationality=Label(register_page,text="Nationality",font ="none 15",bg ="#fdb9b9")
-password=Label(register_page,text="Password",font ="none 15",bg ="#fdb9b9")
-repassword=Label(register_page,text="re-enter Password",font ="none 15",bg ="#fdb9b9")
+cust_id=Label(register_page,text = "Customer ID",font ="none 15",bg ="#93D5FF")
+cust_id_display=Label(register_page,text = cust_id_,font ="none 15",bg ="#93D5FF")
+full_name=Label(register_page,text = "Full name",font ="none 15",bg ="#93D5FF")
+#address=Label(register_page,text="Address",font ="none 15",bg ="#93D5FF")
+street=Label(register_page,text = "Address: Street",font ="none 15",bg ="#93D5FF")
+state=Label(register_page,text="Address: State",font ="none 15",bg ="#93D5FF")
+city=Label(register_page,text = "Address: City",font ="none 15",bg ="#93D5FF")
+pin=Label(register_page,text = "Address: pin",font ="none 15",bg ="#93D5FF")
+dob=Label(register_page,text="DOB",font ="none 15",bg ="#93D5FF")
+age=Label(register_page,text = "Age",font ="none 15",bg ="#93D5FF")
+gender=Label(register_page,text="gender",font ="none 15",bg ="#93D5FF")
+email=Label(register_page,text = "Email ID",font ="none 15",bg ="#93D5FF")
+Contact=Label(register_page,text="Contact",font ="none 15",bg ="#93D5FF")
+pan=Label(register_page,text = "PAN no.",font ="none 15",bg ="#93D5FF")
+nationality=Label(register_page,text="Nationality",font ="none 15",bg ="#93D5FF")
+password=Label(register_page,text="Password",font ="none 15",bg ="#93D5FF")
+repassword=Label(register_page,text="re-enter Password",font ="none 15",bg ="#93D5FF")
 ##########################################################################
 #Only Entry() 
-#cust_id=Entry(register_page,text = "Customer ID",font ="none 15",bg ="#fdb9b9")
-full_name_box=Entry(register_page,text = "Full name",font ="none 15",bg ="#fdb9b9")
+#cust_id=Entry(register_page,text = "Customer ID",font ="none 15",bg ="#93D5FF")
+full_name_box=Entry(register_page,text = "Full name",font ="none 15",bg ="#93D5FF")
 
-street_box=Entry(register_page,font ="none 15",bg ="#fdb9b9")
-state_box=Entry(register_page,font ="none 15",bg ="#fdb9b9")
-city_box=Entry(register_page,font ="none 15",bg ="#fdb9b9")
-pin_box=Entry(register_page,font ="none 15",bg ="#fdb9b9")
-dob_box=Entry(register_page,font ="none 15",bg ="#fdb9b9")
-age_box=Entry(register_page,font ="none 15",bg ="#fdb9b9")
-gender_box=Entry(register_page,font ="none 15",bg ="#fdb9b9")
-email_box=Entry(register_page,font ="none 15",bg ="#fdb9b9")
-Contact_box=Entry(register_page,font ="none 15",bg ="#fdb9b9")
-pan_box=Entry(register_page,font ="none 15",bg ="#fdb9b9")
-nationality_box=Entry(register_page,font ="none 15",bg ="#fdb9b9")
-password_box=Entry(register_page,font="none 15", w=20,show="*",bg ="#fdb9b9")
-re_password_box=Entry(register_page,font="none 15", w=20,show="*",bg ="#fdb9b9")
+street_box=Entry(register_page,font ="none 15",bg ="#93D5FF")
+state_box=Entry(register_page,font ="none 15",bg ="#93D5FF")
+city_box=Entry(register_page,font ="none 15",bg ="#93D5FF")
+pin_box=Entry(register_page,font ="none 15",bg ="#93D5FF")
+dob_box=Entry(register_page,font ="none 15",bg ="#93D5FF")
+age_box=Entry(register_page,font ="none 15",bg ="#93D5FF")
+gender_box=Entry(register_page,font ="none 15",bg ="#93D5FF")
+email_box=Entry(register_page,font ="none 15",bg ="#93D5FF")
+Contact_box=Entry(register_page,font ="none 15",bg ="#93D5FF")
+pan_box=Entry(register_page,font ="none 15",bg ="#93D5FF")
+nationality_box=Entry(register_page,font ="none 15",bg ="#93D5FF")
+password_box=Entry(register_page,font="none 15", w=20,show="*",bg ="#93D5FF")
+re_password_box=Entry(register_page,font="none 15", w=20,show="*",bg ="#93D5FF")
 ##########################################################################
 #Only Buttons()
 register=Button(register_page,text="Register",padx=30,pady=5,command=register_button)
@@ -203,7 +203,7 @@ go_back.grid(row=18,column=1,pady=10,padx=20,sticky = W)
 def create_account_after_register():
     account_page =Toplevel()
     account_page.title("KM bank")
-    account_page.configure(bg="#fdb9b9")
+    account_page.configure(bg="#93D5FF")
     account_page.iconbitmap("dbmsicon.ico")
 
 
@@ -257,7 +257,9 @@ def create_account_after_register():
         print(current)
         if savings == 1 and current ==0:
             interest_id = 1
-            interest_rate = 10
+            cursor.execute("SELECT SAVING_INT  FROM INTEREST where INTEREST_ID  =1")
+            x= cursor.fetchall()
+            interest_rate = x[0][0]
             interest_amt = 0
             balance = 0
         else:
@@ -295,8 +297,8 @@ def create_account_after_register():
         register_page.destroy()
 
     #Account Labels
-    acc_no_l=Label(account_page,text = "Account No.",font ="none 15",bg ="#fdb9b9")
-    acc_no_d=Label(account_page,text = acc_no,font ="none 15",bg ="#fdb9b9")
+    acc_no_l=Label(account_page,text = "Account No.",font ="none 15",bg ="#93D5FF")
+    acc_no_d=Label(account_page,text = acc_no,font ="none 15",bg ="#93D5FF")
     #Checkbuttons
     svg1 = IntVar()
     cur1 = IntVar()

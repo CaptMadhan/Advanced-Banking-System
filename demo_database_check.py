@@ -13,7 +13,8 @@ cursor.execute(''' create table if not exists account_NO_generator(row int prima
 ''')
 cursor.execute(''' create table if not exists transactionID_generator(row int primary key ,trans_id_g int)
 ''')
-
+cursor.execute(''' create table if not exists employeeID_generator(row int primary key ,employee_id_g int)
+''')
 #cursor.execute("INSERT INTO customerID_generator VALUES (:row, :cust_id_g)",
 #              {
 #                 'row':1 ,
@@ -24,12 +25,17 @@ cursor.execute(''' create table if not exists transactionID_generator(row int pr
 #               'row':1 ,
 #             'acc_no':66556655000
 #       })
-cursor.execute("INSERT INTO transactionID_generator VALUES (:row, :trans_id_g)",
-             {
-               'row':1 ,
-             'trans_id_g':8888811000
-       })
+#cursor.execute("INSERT INTO transactionID_generator VALUES (:row, :trans_id_g)",
+#             {
+#               'row':1 ,
+#               'trans_id_g':8888811000
+#       })
 
+#cursor.execute("INSERT INTO employeeID_generator VALUES (:row, :employee_id_g)",
+#              {
+#                 'row':1 ,
+#                'employee_id_g':7000
+#           })
 
 #cursor.execute("SELECT cust_id_g FROM customerID_generator where row =1")
 #x = cursor.fetchall()
@@ -39,6 +45,11 @@ cursor.execute("INSERT INTO transactionID_generator VALUES (:row, :trans_id_g)",
 #    'cust_id_d':x[0][0]+1
 #    }
 #    )
+#cursor.execute("INSERT INTO INTEREST VALUES (:INTEREST_ID , :SAVING_INT )",
+#              {
+#                 'INTEREST_ID':1 ,
+#                'SAVING_INT':10
+#           })
 cursor.execute('''create table IF NOT EXISTS CUSTOMER(
 CUST_ID INT PRIMARY KEY,
 PASSWORD VARCHAR(20),
@@ -142,6 +153,20 @@ DATE_OF_TRANS DATE,
 Foreign Key(AC_NO) REFERENCES ACCOUNT(AC_NO) ON DELETE CASCADE);
 ''')
 
+#cursor.execute("INSERT INTO BRANCH VALUES (:BRANCH_ID , :BRANCH_NAME )",
+#             {
+#               'BRANCH_ID':1001 ,
+#             'BRANCH_NAME':"GAT2 RRnagar"
+#       })
+'''
+cursor.execute("INSERT INTO BRANCH_ADDRESS VALUES (:BRANCH_ID ,:STATE,:COUNTRY,:PIN)",
+             {
+                'BRANCH_ID':1001 ,
+                'STATE':"Karnataka",
+                'COUNTRY':"India" ,
+                'PIN':560060,
+       })
+'''
 #cursor.execute("SELECT * FROM CUSTOMER")
 #cursor.execute("SELECT * FROM CUSTOMER_Address")
 #cursor.execute("SELECT * FROM INTEREST")
@@ -186,9 +211,6 @@ print(cursor.fetchall())
 #######################################################################################
 #cursor.execute("DELETE from users WHERE oid='0'")
 
-x =cursor.fetchall()
-for i in x:
-    print(x)
 
 # commit all the changes
 data_base.commit()

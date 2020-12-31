@@ -7,9 +7,6 @@ data_base = base.connect("demo1.db")
 # create a cursor
 cursor = data_base.cursor()
 
-
-
-
 '''
 cursor.execute("select * from account ")
 print(cursor.fetchall())
@@ -31,6 +28,8 @@ else:
 #cursor.execute("select * FROM transactions where ac_no =:ac_no",{'ac_no':ac_no})
 #x = cursor.fetchall()
 #print(x)
+
+
 
 mainloop()
 data_base.commit()
