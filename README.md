@@ -3,6 +3,7 @@ Implementation of a Simple Bank Data Management System using Tkinter module from
 The main aim of this project is to simulate the working of digital banking, ease the process of banking and reducing customer's time and thier dependency on Bank Employees for their queries about their account.
 Account number, CustomerID, TransactionID, EmployeeID are all generated automatically by the application, TransactionID is generated for each deposit, withdrawal or even interest amount added from the bank to the account.
 This Project has the following features:
+
 ->Create Account 
 
 
