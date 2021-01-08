@@ -97,29 +97,32 @@ def login():
             acc_no_input_activity =Entry(account_activity_details_tk,font ="none 20",bg ="#93D5FF")
             acc_no_input_activity.grid(row=1,column=0,pady=10,padx=20)
             def get_ac_no():
-                ac_no=int(acc_no_input_activity.get())
-                get_acc_button.destroy()
-                acc_no_input_activity.destroy()
-                cursor.execute("SELECT * FROM transactions where ac_no =:ac_no",{'ac_no':ac_no})
-                print(ac_no)
-                x = cursor.fetchall()
-                i=0
-                j=0
-                result =[]
-                var=' '
-                for i in range(len(x)):
-                    for j in range(4):
-                        var=var+"\t" +str(x[i][j]) 
-                    result.append(var)
+                if acc_no_input_activity.get() == '':
+                    Label(account_activity_details_tk,text="Enter Account No. or close",font ="none 25",bg ="#93D5FF").grid(row=3,column=0,pady=10,padx=20)
+                else:
+                    ac_no=int(acc_no_input_activity.get())
+                    get_acc_button.destroy()
+                    acc_no_input_activity.destroy()
+                    cursor.execute("SELECT * FROM transactions where ac_no =:ac_no",{'ac_no':ac_no})
+                    print(ac_no)
+                    x = cursor.fetchall()
+                    i=0
+                    j=0
+                    result =[]
                     var=' '
-                i=0
-                Label(account_activity_details_tk,text ="\tACCOUNT NO\tTRANS ID   \tACTIVITY \tACTIVITY DATETIME\t",font ="none 15",bg ="#93D5FF", borderwidth=2, relief="ridge",pady=10,padx=10).grid(row=0,column=0,pady=10,padx=10,sticky = E)
-                for i in range(len(result)):
-                    Label(account_activity_details_tk,text = result[i] +"\t",font ="none 15",bg ="#93D5FF", borderwidth=2, relief="ridge").grid(row=i+1,column=0,pady=10,padx=10,sticky = E)
-                def close_button_f():
-                    account_activity_details_tk.destroy()
-                close_button=Button(account_activity_details_tk,text="Close",padx=20,pady=5,height = 2, width = 20,command=close_button_f)
-                close_button.grid(row=30,column=0,pady=10,padx=20)
+                    for i in range(len(x)):
+                        for j in range(4):
+                            var=var+"\t" +str(x[i][j]) 
+                        result.append(var)
+                        var=' '
+                    i=0
+                    Label(account_activity_details_tk,text ="\tACCOUNT NO\tTRANS ID   \tACTIVITY \tACTIVITY DATETIME\t",font ="none 15",bg ="#93D5FF", borderwidth=2, relief="ridge",pady=10,padx=10).grid(row=0,column=0,pady=10,padx=10,sticky = E)
+                    for i in range(len(result)):
+                        Label(account_activity_details_tk,text = result[i] +"\t",font ="none 15",bg ="#93D5FF", borderwidth=2, relief="ridge").grid(row=i+1,column=0,pady=10,padx=10,sticky = E)
+                    def close_button_f():
+                        account_activity_details_tk.destroy()
+                    close_button=Button(account_activity_details_tk,text="Close",padx=20,pady=5,height = 2, width = 20,command=close_button_f)
+                    close_button.grid(row=30,column=0,pady=10,padx=20)
             
 
             get_acc_button=Button(account_activity_details_tk,text="submit",padx=20,pady=5,height = 2, width = 20,command=get_ac_no)
@@ -349,6 +352,7 @@ def login():
             Label(add_int_acc_page,text ="Confirm to add interest amount to all accounts" ,font ="none 25",bg ="#93D5FF").grid(row=0,column=0,pady=10,padx=20)
             confirm_button=Button(add_int_acc_page,text="CONFIRM",padx=20,pady=5,height = 2, width = 20,command=CONFIRM_f)
             confirm_button.grid(row=1,column=0,pady=10,padx=20)
+
 
         def log_out_f():
             admin_page.destroy()

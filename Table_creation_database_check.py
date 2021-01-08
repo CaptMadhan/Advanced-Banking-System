@@ -152,6 +152,28 @@ TRANS_TYPE VARCHAR(20),
 DATE_OF_TRANS DATE,
 Foreign Key(AC_NO) REFERENCES ACCOUNT(AC_NO) ON DELETE CASCADE);
 ''')
+cursor.execute('''CREATE TABLE IF NOT EXISTS DELETED_ACCOUNTS(
+AC_NO INT PRIMARY KEY,
+INTEREST_ID INT,
+CUST_ID INT,
+AC_TYPE VARCHAR(10),
+BALANCE INT, 
+INTEREST_AMOUNT INT,
+INTEREST_RATE INT,
+OPEN_DATE DATE,
+Foreign Key(CUST_ID) REFERENCES CUSTOMER(CUST_ID) ON DELETE CASCADE,
+Foreign Key(INTEREST_ID) REFERENCES INTEREST(INTEREST_ID) ON DELETE CASCADE
+);''')
+#triggers
+
+#cursor.execute('''CREATE TRIGGER  backup_account_data  BEFORE insert ON account 
+ #                   FOR EACH ROW
+  #                  BEGIN   
+   #                 
+    #                INSERT INTO DELETED_ACCOUNTS VALUES (NEW.AC_NO,NEW.INTEREST_ID,NEW.CUST_ID,NEW.AC_TYPE,NEW.BALANCE,NEW.INTEREST_AMOUNT,NEW.INTEREST_RATE,NEW.OPEN_DATE);                            
+      #              END
+      #              ;
+       #         ''')
 
 #cursor.execute("INSERT INTO BRANCH VALUES (:BRANCH_ID , :BRANCH_NAME )",
 #             {
