@@ -152,7 +152,7 @@ TRANS_TYPE VARCHAR(20),
 DATE_OF_TRANS DATE,
 Foreign Key(AC_NO) REFERENCES ACCOUNT(AC_NO) ON DELETE CASCADE);
 ''')
-cursor.execute('''CREATE TABLE IF NOT EXISTS DELETED_ACCOUNTS(
+cursor.execute('''CREATE TABLE IF NOT EXISTS BACKUP_ACCOUNTS_DATA(
 AC_NO INT PRIMARY KEY,
 INTEREST_ID INT,
 CUST_ID INT,
@@ -160,20 +160,32 @@ AC_TYPE VARCHAR(10),
 BALANCE INT, 
 INTEREST_AMOUNT INT,
 INTEREST_RATE INT,
-OPEN_DATE DATE,
-Foreign Key(CUST_ID) REFERENCES CUSTOMER(CUST_ID) ON DELETE CASCADE,
-Foreign Key(INTEREST_ID) REFERENCES INTEREST(INTEREST_ID) ON DELETE CASCADE
+OPEN_DATE DATE
 );''')
+cursor.execute('''CREATE TABLE IF NOT EXISTS BACKUP_TRANSACTIONS_DATA(
+AC_NO INT ,
+TRANS_ID INT PRIMARY KEY,
+TRANS_TYPE VARCHAR(20),
+DATE_OF_TRANS DATE);
+''')
 #triggers
-
+#cursor.execute('''CREATE TRIGGER  backup_transaction_data_trigger  BEFORE insert ON TRANSACTIONS 
+#                    FOR EACH ROW
+#                    BEGIN   
+#                    
+#                   INSERT INTO BACKUP_TRANSACTIONS_DATA VALUES (NEW.AC_NO,NEW.TRANS_ID ,NEW.TRANS_TYPE,NEW.DATE_OF_TRANS );                            
+#                    END
+#                    ;
+#                ''')
 #cursor.execute('''CREATE TRIGGER  backup_account_data  BEFORE insert ON account 
- #                   FOR EACH ROW
-  #                  BEGIN   
-   #                 
-    #                INSERT INTO DELETED_ACCOUNTS VALUES (NEW.AC_NO,NEW.INTEREST_ID,NEW.CUST_ID,NEW.AC_TYPE,NEW.BALANCE,NEW.INTEREST_AMOUNT,NEW.INTEREST_RATE,NEW.OPEN_DATE);                            
-      #              END
-      #              ;
-       #         ''')
+#                    FOR EACH ROW
+#                    BEGIN   
+#                    
+#                    INSERT INTO BACKUP_ACCOUNTS_DATA VALUES (NEW.AC_NO,NEW.INTEREST_ID,NEW.CUST_ID,NEW.AC_TYPE,NEW.BALANCE,NEW.INTEREST_AMOUNT,NEW.INTEREST_RATE,NEW.OPEN_DATE);                            
+#                    END
+#                    ;
+#                ''')
+
 
 #cursor.execute("INSERT INTO BRANCH VALUES (:BRANCH_ID , :BRANCH_NAME )",
 #             {

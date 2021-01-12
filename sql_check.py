@@ -28,8 +28,13 @@ else:
 #cursor.execute("select * FROM transactions where ac_no =:ac_no",{'ac_no':ac_no})
 #x = cursor.fetchall()
 #print(x)
-#cursor.execute("INSERT INTO ACCOUNT VALUES(665566999,1,77777777,'savings',0,0,10,'2020-02-02')")
-cursor.execute("select * from deleted_accounts")
+
+#cursor.execute("DELETE FROM ACCOUNT WHERE AC_NO = :AC_NO",{'AC_NO':665566999})
+cursor.execute("SELECT * FROM BACKUP_TRANSACTIONS_DATA")
+print(cursor.fetchall())
+
+cursor.execute("SELECT * FROM BACKUP_ACCOUNTS_DATA")
+
 print(cursor.fetchall())
 data_base.commit()
 data_base.close()
