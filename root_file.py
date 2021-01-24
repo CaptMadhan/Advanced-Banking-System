@@ -201,14 +201,14 @@ def login():
                                 'PIN':pin
                             })
                     add_emp_page.destroy()
+                    cursor.execute("UPDATE employeeID_generator SET employee_id_g = :employee_id_g WHERE row=1;",{
+                    'employee_id_g':x[0][0]+1
+                    }
+                    ) 
 
             cursor.execute("SELECT employee_id_g FROM employeeID_generator where row =1")
             x = cursor.fetchall()
-            emp_id =x[0][0]
-            cursor.execute("UPDATE employeeID_generator SET employee_id_g = :employee_id_g WHERE row=1;",{
-                'employee_id_g':x[0][0]+1
-                }
-                )    
+            emp_id =x[0][0]   
             #Labels
             Label(add_emp_page,text = "EMP_ID",font ="none 15",bg ="#93D5FF")       .grid(row=1,column=0,pady=10,padx=20,sticky = W)
             Label(add_emp_page,text = emp_id,font ="none 15",bg ="#93D5FF")         .grid(row=1,column=1,pady=10,padx=20,sticky = W)
@@ -285,7 +285,7 @@ def login():
                 'SAVING_INT':new_interest_rate
                 }
                 ) 
-                cursor.execute("UPDATE ACCOUNT SET INTEREST_RATE= :INTEREST_RATE;",{
+                cursor.execute("UPDATE ACCOUNT SET INTEREST_RATE= :INTEREST_RATE WHERE INTEREST_ID =1;",{
                 'INTEREST_RATE':new_interest_rate
                 }
                 )
@@ -321,12 +321,14 @@ def login():
                     int_rate = float(interest_rate_fetch[0][0]) 
                     updated_balance = round((balance + balance*int_rate*0.001),3) 
                     updated_int_amt=round((balance*int_rate*0.001),3)
-                    cursor.execute("UPDATE account SET balance= :balance;",{
-                    'balance':updated_balance
+                    cursor.execute("UPDATE account SET balance= :balance where AC_NO=:AC_NO;",{
+                    'balance':updated_balance,
+                    'AC_NO':ac_no
                     }
                     )
-                    cursor.execute("UPDATE account SET INTEREST_AMOUNT = :INTEREST_AMOUNT ;",{
-                    'INTEREST_AMOUNT':updated_int_amt
+                    cursor.execute("UPDATE account SET INTEREST_AMOUNT = :INTEREST_AMOUNT WHERE AC_NO=:AC_NO ;",{
+                    'INTEREST_AMOUNT':updated_int_amt,
+                    'AC_NO':ac_no
                     }
                     )
                     cursor.execute("SELECT trans_id_g FROM transactionID_generator where row =1")
@@ -344,7 +346,7 @@ def login():
                         
                         'AC_NO':ac_no,
                         'TRANS_ID':trans_id,
-                        'TRANS_TYPE': "\tSavingsINT +"+ str(updated_balance)+"\t",
+                        'TRANS_TYPE': "\tSavingsINT +"+ str(updated_int_amt)+"\t",
                         'DATE_OF_TRANS':date_of_trans 
                         })
                 confirm_button.destroy()

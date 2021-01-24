@@ -201,17 +201,6 @@ cursor.execute("INSERT INTO BRANCH_ADDRESS VALUES (:BRANCH_ID ,:STATE,:COUNTRY,:
                 'PIN':560060,
        })
 '''
-#cursor.execute("SELECT * FROM CUSTOMER")
-#cursor.execute("SELECT * FROM CUSTOMER_Address")
-#cursor.execute("SELECT * FROM INTEREST")
-#cursor.execute("SELECT * FROM ACCOUNT")
-cursor.execute("SELECT * FROM BRANCH")
-cursor.execute("SELECT * FROM OFFICER")
-cursor.execute("SELECT * FROM BRANCH_ADDRESS")
-cursor.execute("SELECT * FROM OFFICER_ADDRESS")
-cursor.execute("SELECT * FROM MANAGER")
-cursor.execute("SELECT * FROM MANAGER_ADDRESS")
-cursor.execute("SELECT * FROM TRANSACTIONS")
 
 #######################################################################################
 #admin login data

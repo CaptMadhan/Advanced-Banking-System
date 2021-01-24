@@ -18,10 +18,7 @@ account_page_exists=0
 cursor.execute("SELECT cust_id_g FROM customerID_generator where row =1")
 x = cursor.fetchall()
 cust_id_ =x[0][0]
-cursor.execute("UPDATE customerID_generator SET cust_id_g = :cust_id_d WHERE row=1;",{
-    'cust_id_d':x[0][0]+1
-    }
-    )
+
 ##########################################################################
 # Only functions()
 
@@ -109,6 +106,10 @@ def register_button():
                     'CITY':city ,
                     'PIN':pin
                 })
+        cursor.execute("UPDATE customerID_generator SET cust_id_g = :cust_id_d WHERE row=1;",{
+        'cust_id_d':x[0][0]+1
+    }
+    )
         create_account_after_register()    
                       
 def go_back_button():
