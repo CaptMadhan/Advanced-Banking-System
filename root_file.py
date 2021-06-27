@@ -457,7 +457,7 @@ def login():
             withdraw_page.title("KM bank")
             withdraw_page.configure(bg="#93D5FF")
             withdraw_page.iconbitmap("dbmsicon.ico")
-            withdraw_test_l=             Label(withdraw_page,text = "  Enter amount to withdraw: ",font ="none 25",bg ="#93D5FF")
+            withdraw_test_l=             Label(withdraw_page,text = "  Enter amount to transfer: ",font ="none 25",bg ="#93D5FF")
             withdraw_amount_entry=       Entry(withdraw_page,font ="none 25")
             withdraw_test_l          .grid(row=0,column=0,pady=10,padx=20)
             withdraw_amount_entry    .grid(row=1,column=0,pady=10,padx=20)
@@ -466,7 +466,7 @@ def login():
                 b = cursor.fetchall()
                 balance =b[0][0]
                 if withdraw_amount_entry.get() == '':
-                    Label(withdraw_page,text = "  Enter amount to withdraw or Close ",font ="none 10",bg ="#93D5FF").grid(row=1,column=1,pady=10,padx=20)
+                    Label(withdraw_page,text = "  Enter amount to transfer or Close ",font ="none 10",bg ="#93D5FF").grid(row=1,column=1,pady=10,padx=20)
                 elif withdraw_amount_entry.get().isdigit():
                     cursor.execute("SELECT trans_id_g FROM transactionID_generator where row =1")
                     t = cursor.fetchall()
@@ -496,7 +496,7 @@ def login():
                     Label(withdraw_page,text = "  Enter only numbers ",font ="none 10",bg ="#93D5FF").grid(row=1,column=1,pady=10,padx=20)
 
                 
-            submit_button=Button(withdraw_page,text="withdraw",padx=30,pady=10,height = 2, width = 20,command=submit_button_f_w)
+            submit_button=Button(withdraw_page,text="Transfer",padx=30,pady=10,height = 2, width = 20,command=submit_button_f_w)
             submit_button.grid(row=2,column=0,pady=10,padx=20)
             def close_button_f():
                 withdraw_page.destroy()
@@ -546,7 +546,7 @@ def login():
         #Button
         check_balance=Button(signin_page,text="Check Balance",padx=30,pady=5,height = 2, width = 20,command=check_balance_f)
         deposit=Button(signin_page,text="Deposit",padx=30,pady=5,height = 2, width = 20,command=deposit_f)
-        withdraw=Button(signin_page,text="Withdraw",padx=30,pady=5,height = 2, width = 20,command=withdraw_f)
+        withdraw=Button(signin_page,text="Transfer",padx=30,pady=5,height = 2, width = 20,command=withdraw_f)
         mini_statement=Button(signin_page,text="Mini Statement",padx=30,pady=5,height = 2, width = 20,command=mini_statement_f)
         log_out_button=Button(signin_page,text="LogOut",padx=30,pady=5,height = 2, width = 20,command=log_out_f)
         
