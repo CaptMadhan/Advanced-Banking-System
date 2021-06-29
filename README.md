@@ -37,6 +37,14 @@ To run the application, download and store all the files in a directory and run 
 Thank You
 
 <p align="center">
-  <img src="https://github.com/CaptMadhan/Advanced-Banking-System/blob/main/Screenshots/All%20Manager's%20features.jpg" width="350" title="Manager's View">
-  <img src="https://github.com/CaptMadhan/Advanced-Banking-System/blob/main/Screenshots/customer's%20view.jpg" width="350" atitle="Customer's View">
+            <img src="https://github.com/CaptMadhan/Advanced-Banking-System/blob/main/Screenshots/register%20page.jpg" title="Register Page">
+          
+            <img src="https://github.com/CaptMadhan/Advanced-Banking-System/blob/main/Screenshots/manager's%20view.jpg" title="Manager's View">
+          
+          
+  <img src="https://github.com/CaptMadhan/Advanced-Banking-System/blob/main/Screenshots/All%20Manager's%20features.jpg" title="All Views of Manager">
+          
+          
+  <img src="https://github.com/CaptMadhan/Advanced-Banking-System/blob/main/Screenshots/customer's%20view.jpg" title="Customer's View">
+          
 </p>
