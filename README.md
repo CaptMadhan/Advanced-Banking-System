@@ -35,3 +35,8 @@ This Project has the following features:
 
 To run the application, download and store all the files in a directory and run the root_file.py.
 Thank You
+
+<p align="center">
+  <img src="https://github.com/CaptMadhan/Advanced-Banking-System/blob/main/Screenshots/All%20Manager's%20features.jpg" width="350" title="Manager's View">
+  <img src="https://github.com/CaptMadhan/Advanced-Banking-System/blob/main/Screenshots/customer's%20view.jpg" width="350" atitle="Customer's View">
+</p>
