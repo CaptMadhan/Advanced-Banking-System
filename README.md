@@ -39,10 +39,15 @@ Thank You
 <p align="center">
             <img src="https://github.com/CaptMadhan/Advanced-Banking-System/blob/main/Screenshots/register%20page.jpg" title="Register Page">
           
-            <img src="https://github.com/CaptMadhan/Advanced-Banking-System/blob/main/Screenshots/manager's%20view.jpg" title="Manager's View">
+          
+          
+          
           
           
   <img src="https://github.com/CaptMadhan/Advanced-Banking-System/blob/main/Screenshots/All%20Manager's%20features.jpg" title="All Views of Manager">
+          
+          
+          
           
           
   <img src="https://github.com/CaptMadhan/Advanced-Banking-System/blob/main/Screenshots/customer's%20view.jpg" title="Customer's View">
